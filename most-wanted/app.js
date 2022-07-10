@@ -190,9 +190,17 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
-function searchById(id, people) {
+function searchById (id, people) {
     let foundPerson = people.filter(function(el) {
         return (el.id === id);
     });
     return foundPerson[0];
+}
+
+function findPersonById (personId, people) {
+    if (personId === null) {
+        return "None";
+    }
+    let person = searchById(personId, people);
+    return `${person.firstName} ${person.lastName}`;
 }
