@@ -204,3 +204,13 @@ function findPersonById (personId, people) {
     let person = searchById(personId, people);
     return `${person.firstName} ${person.lastName}`;
 }
+
+function findPeopleById (array, people) {
+    if (array.length === 0) {
+        return "None";
+    }
+    let person = array.map(function(el) {
+        return findPersonById(el, people);
+    });
+    return person;
+}
