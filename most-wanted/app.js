@@ -217,5 +217,19 @@ function findPeopleById (array, people) {
 
 function findPersonFamily (person, people) {
     let family = `Parents: ${findPeopleById(person.parents, people)}\n`;
+    family += `Spouse: ${findPersonById(person.currentSpouse, people)}\n`;
+    family += `Siblings: ${findPersonSiblings(person, people)}\n`;
     return family;
+}
+
+function findPersonSiblings (person, people) {
+    if (person.parents.length === 0) {
+        return "None";
+    }
+    let siblings = people.filter(function(el) {
+        return ((el.parents[0] === person.parents[0] || el.parents[0] === person.parents[1] || el.parents[1] === person.parents[0] || el.parents[1] === person.parents[1]) && el.id !== person.id);
+    });
+    return siblings.map(function(el) {
+        return `${el.firstName} ${el.lastName}`;
+    });
 }
