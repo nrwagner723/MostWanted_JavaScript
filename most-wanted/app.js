@@ -234,13 +234,19 @@ function findPersonSiblings (person, people) {
     });
 }
 
-function findChildren (person, people) {
+function findPersonChildren (person, people) {
     let children = people.filter(function(el) {
         return (el.parents.includes(person.id));
     });
     return children;
 }
 
-function findPersonDescendants () {
-
+function findPersonDescendants (person, people) {
+    let children = findPersonChildren(person, people);
+    if (children.length === 0) {
+        return "None";
+    }
+    return children.map(function(el) {
+        `${el.firstName} ${el.lastName} ${findPersonDescendants(el, people)}\n`;
+    });
 }
