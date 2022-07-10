@@ -70,7 +70,7 @@ function mainMenu(person, people) {
             alert(personInfo);
             break;
         case "family":
-            //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+            //! DONE TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people);
             alert(personFamily);
@@ -232,4 +232,15 @@ function findPersonSiblings (person, people) {
     return siblings.map(function(el) {
         return `${el.firstName} ${el.lastName}`;
     });
+}
+
+function findChildren (person, people) {
+    let children = people.filter(function(el) {
+        return (el.parents.includes(person.id));
+    });
+    return children;
+}
+
+function findPersonDescendants () {
+
 }
