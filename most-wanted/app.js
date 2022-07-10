@@ -214,3 +214,8 @@ function findPeopleById (array, people) {
     });
     return person;
 }
+
+function findPersonFamily (person, people) {
+    let family = `Parents: ${findPeopleById(person.parents, people)}\n`;
+    return family;
+}
