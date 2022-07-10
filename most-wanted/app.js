@@ -242,11 +242,16 @@ function findPersonChildren (person, people) {
 }
 
 function findPersonDescendants (person, people) {
+    let descendants = `Children: ${findDescendants(person, people)}\n`;
+    return descendants;
+}
+
+function findDescendants (person, people) {
     let children = findPersonChildren(person, people);
     if (children.length === 0) {
         return "None";
     }
     return children.map(function(el) {
-        `${el.firstName} ${el.lastName} ${findPersonDescendants(el, people)}\n`;
+        return `${el.firstName} ${el.lastName} ${findDescendants(el, people)}\n`;
     });
 }
