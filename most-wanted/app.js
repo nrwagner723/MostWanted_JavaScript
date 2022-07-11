@@ -259,7 +259,7 @@ function validateNameInput (input) {
 }
 
 function searchByTraits (people) {
-    let chooseTrait = prompt("Choose the trait you want to search for:\n(Please Enter a Number)\n[1] 'gender'\n[2] 'date of birth'\n[3] 'height'\n[4] 'weight'\n[5] 'eye color'\n[6] 'occupation'");
+    let chooseTrait = prompt("Choose the trait you want to search for:\n(please enter a number)\n[1] 'gender'\n[2] 'date of birth'\n[3] 'height'\n[4] 'weight'\n[5] 'eye color'\n[6] 'occupation'");
     let chosenTrait = "";
     switch(chooseTrait) {
         case "1":
@@ -283,5 +283,7 @@ function searchByTraits (people) {
         default: 
             searchByTraits(people);
     }
-    
+    return people.filter(function(el) {
+        return (el.chosenTrait === people.chosenTrait);
+    });
 }
