@@ -76,7 +76,7 @@ function mainMenu(person, people) {
             alert(personFamily);
             break;
         case "descendants":
-            //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
+            //! DONE TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             let personDescendants = findPersonDescendants(person[0], people);
             alert(personDescendants);
@@ -102,8 +102,8 @@ function mainMenu(person, people) {
  * @returns {Array}             An array containing the person-object (or empty array if no match)
  */
 function searchByName(people) {
-    let firstName = promptFor("What is the person's first name?", chars);
-    let lastName = promptFor("What is the person's last name?", chars);
+    let firstName = promptFor("What is the person's first name?", validateNameInput);
+    let lastName = promptFor("What is the person's last name?", validateNameInput);
 
     // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
     let foundPerson = people.filter(function (person) {
@@ -249,9 +249,15 @@ function findPersonDescendants (person, people) {
 function findDescendants (person, people) {
     let children = findPersonChildren(person, people);
     if (children.length === 0) {
-        return "None";
+        return ""; // i had return "None"; but for some reason, even if the person did have children, it was displaying the word "None" after the name of each child, so I had to remove it, but I have no idea why
     }
     return children.map(function(el) {
         return `${el.firstName} ${el.lastName} ${findDescendants(el, people)}\n`;
     });
 }
+
+function validateNameInput (input) {
+    let allLower = input.toLowerCase();
+    let title = allLower[0].toUpperCase();
+    return title;
+} // I was trying to turn the whole name lower case then just the first letter into uppercase, like it is in the data.js file, but it doesn't work, could you please explain how to fix it?
