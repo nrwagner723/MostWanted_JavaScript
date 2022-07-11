@@ -18,10 +18,7 @@
 function app(people) {
     // promptFor() is a custom function defined below that helps us prompt and validate input more easily
     // Note that we are chaining the .toLowerCase() immediately after the promptFor returns its value
-    let searchType = promptFor(
-        "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
-        yesNo
-    ).toLowerCase();
+    let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
     let searchResults;
     // Routes our application based on the user's input
     switch (searchType) {
@@ -257,7 +254,16 @@ function findDescendants (person, people) {
 }
 
 function validateNameInput (input) {
-    let allLower = input.toLowerCase();
-    let title = allLower[0].toUpperCase();
+    let title = input[0].toUpperCase();
     return title;
-} // I was trying to turn the whole name lower case then just the first letter into uppercase, like it is in the data.js file, but it doesn't work, could you please explain how to fix it?
+}
+
+function validateTraitInput (input) {
+    let results = input.toLowerCase();
+    return results;
+}
+
+function searchByTraits (people) {
+    let chooseTrait = promptFor("Choose the trait you want to search for:\n(Please Enter a Number)\n[1] 'gender'\n[2] 'date of birth'\n[3] 'height'\n[4] 'weight'\n[5] 'eye color'\n[6] 'occupation'", validateTraitInput);
+
+}
