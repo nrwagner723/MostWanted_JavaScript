@@ -259,7 +259,7 @@ function validateNameInput (input) {
 }
 
 function searchByTraits (people) {
-    let chooseTrait = prompt("Choose the trait you want to search for:\n(please enter a number)\n[1] 'gender'\n[2] 'date of birth'\n[3] 'height'\n[4] 'weight'\n[5] 'eye color'\n[6] 'occupation'");
+    let chooseTrait = prompt("Choose the trait you want to search for:\n(please enter a number)\n[1] gender\n[2] date of birth\n[3] height\n[4] weight\n[5] eye color\n[6] occupation\n[7] display results");
     let chosenTrait = "";
     switch(chooseTrait) {
         case "1":
@@ -280,10 +280,21 @@ function searchByTraits (people) {
         case "6":
             chosenTrait = "occupation";
             break;
+        case "7":
+            return peopleArray(people);
         default: 
             searchByTraits(people);
     }
     return people.filter(function(el) {
         return (el.chosenTrait === people.chosenTrait);
+    });
+}
+
+function peopleArray (people) {
+    let counter = 0;
+    let numberOfPeople = prompt("How many people would you like to search for?\n(please enter a number)");
+    return numberOfPeople.map(function(el) {
+        counter += 1;
+        return `[${counter}] ${el.firstName} ${el.lastName}`, people.length;
     });
 }
