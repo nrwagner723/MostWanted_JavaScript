@@ -258,12 +258,30 @@ function validateNameInput (input) {
     return title;
 }
 
-function validateTraitInput (input) {
-    let results = input.toLowerCase();
-    return results;
-}
-
 function searchByTraits (people) {
-    let chooseTrait = promptFor("Choose the trait you want to search for:\n(Please Enter a Number)\n[1] 'gender'\n[2] 'date of birth'\n[3] 'height'\n[4] 'weight'\n[5] 'eye color'\n[6] 'occupation'", validateTraitInput);
-
+    let chooseTrait = prompt("Choose the trait you want to search for:\n(Please Enter a Number)\n[1] 'gender'\n[2] 'date of birth'\n[3] 'height'\n[4] 'weight'\n[5] 'eye color'\n[6] 'occupation'");
+    let chosenTrait = "";
+    switch(chooseTrait) {
+        case "1":
+            chosenTrait = "gender";
+            break;
+        case "2":
+            chosenTrait = "dob";
+            break;
+        case "3":
+            chosenTrait = "height";
+            break;
+        case "4":
+            chosenTrait = "weight";
+            break;
+        case "5":
+            chooseTrait = "eyeColor";
+            break;
+        case "6":
+            chosenTrait = "occupation";
+            break;
+        default: 
+            searchByTraits(people);
+    }
+    
 }
